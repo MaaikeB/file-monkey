@@ -1,7 +1,10 @@
 import os
 
 from flask import Flask, flash, request, redirect, send_from_directory, url_for
+from flask_jwt import JWT, jwt_required
 from werkzeug.utils import secure_filename
+
+from file_monkey.auth import get_auth_token, identity
 
 
 
@@ -16,12 +19,18 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Set the secret key for session purposes
 app.config['SECRET_KEY'] = b'U\xe6\xa8\xc6\xa6K\x7f2\xdf\x1a=\x98p\x8b<e'
 
+# Initialize the JWT extension and set configurations
+jwt = JWT(app, get_auth_token, identity)
+app.config["JWT_VERIFY_EXPIRATION"] = False
+app.config["JWT_AUTH_HEADER_PREFIX"] = 'Token'
+
 # Set the allowed extensions for the uploaded files
 ALLOWED_EXTENSIONS = {'html'}
 
 
 
 @app.route('/upload-file/', methods=['POST'])
+@jwt_required()
 def upload_file():
     """
     Saves a file that is sent by the given file name.
