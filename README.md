@@ -9,24 +9,16 @@ There are two endpoints:
 - `/browse/<file-name>` - Can be used to retrieve the file
 
 
-#### File Upload
-
-
-
-#### Browse
-
-
-
 ## Example
 
 ```
 $ echo '<h1>Hi there!</h1>' > test.html
-$ curl -XPOST localhost:8000/upload-file/ \
+$ curl -XPOST localhost:5000/upload-file/ \
     -F file=@./test.html \
     -F name=myfile.html \
     -H "Authorization: Token 1234567890abcd"
 OK
-$ curl -v localhost:8000/browse/myfile.html/
+$ curl -v localhost:5000/browse/myfile.html/
 # [... request headers etc ...]
 < HTTP/1.0 200 OK
 < Content-Type: text/html; charset=utf-8

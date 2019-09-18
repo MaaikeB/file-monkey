@@ -58,6 +58,17 @@ def upload_file():
     return 'File saved successfully'
 
 
+@app.route("/browse/<filename>/")
+def browse(filename):
+    """
+    Returns the file that is requested
+
+    :return (file): Returns the requested file
+    """
+
+    return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
+
+
 def _allowed_file(filename):
     """
     Helper function that checks if the file has the supported file extension
