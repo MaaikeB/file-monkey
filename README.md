@@ -1,5 +1,5 @@
 
-# File Monkey
+# File Saver
 
 This is a simple file saver application.
 Files can be uploaded and later retrieved by the application.
@@ -9,9 +9,9 @@ There are two endpoints:
 - `/browse/<file-name>` - Can be used to retrieve the file
 
 
-## Endpoints
-
 #### File Upload
+
+
 
 #### Browse
 
@@ -33,4 +33,19 @@ $ curl -v localhost:8000/browse/myfile.html/
 < Content-Length: 18
 # [... other headers ...]
 <h1>Hi there!</h1>
+```
+
+
+## Local Development
+
+You need to have Python3 and pip installed.
+
+Install the requirements (preferrably in a virual environment)
+```
+pip install requirements
+```
+
+Run the app
+```
+env FLASK_APP=main.py flask run
 ```
