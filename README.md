@@ -56,5 +56,5 @@ pip install requirements
 
 Run the app
 ```
-env FLASK_APP=main.py flask run
+env FLASK_APP=file_monkey.main.py flask run
 ```
